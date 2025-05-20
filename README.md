@@ -28,7 +28,3 @@ Bu proje, 3D baskı dekoratif ürünlerin sergilenmesi için tasarlanmış moder
 - CSS3
 - JavaScript (Vanilla)
 - Font Awesome ikonları
-
-## Lisans
-
-MIT 
