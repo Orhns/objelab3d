@@ -1,0 +1,18 @@
+# Admin paneli dosyaları
+admin.html
+css/admin.css
+js/admin.js
+
+# Sistem dosyaları
+.DS_Store
+Thumbs.db
+
+# IDE ve editör dosyaları
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Geçici dosyalar
+*.log
+*.tmp 

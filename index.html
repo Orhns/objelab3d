@@ -34,36 +34,79 @@
                 <a href="#urunler" class="cta-button">Ürünleri Keşfet</a>
             </div>
             <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1581092921461-39b9d08a9b21?w=1200" alt="3D Baskı Örnek">
+                <img src="images/voicu-apostol-93F3aiv_ioM-unsplash.jpg" alt="3D Baskı Örnek">
             </div>
         </section>
 
         <section id="urunler" class="products">
             <h2>Ürün Galerisi</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1581092921461-39b9d08a9b21?w=600" alt="3D Baskı Vazo">
-                    </div>
-                    <h3>Geometrik Vazo</h3>
-                    <p>Modern tasarımlı, dayanıklı PLA malzemeden üretilmiş dekoratif vazo.</p>
+            
+            <!-- Arama ve Filtreleme Bölümü -->
+            <div class="product-controls">
+                <div class="search-box">
+                    <input type="text" id="productSearch" placeholder="Ürün ara...">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
                 </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1581092921461-39b9d08a9b21?w=600" alt="3D Baskı Lamba">
+                
+                <div class="filter-controls">
+                    <div class="filter-group">
+                        <label>Kategori:</label>
+                        <select id="categoryFilter">
+                            <option value="all">Tümü</option>
+                            <option value="Dekoratif">Dekoratif</option>
+                            <option value="Aydınlatma">Aydınlatma</option>
+                            <option value="Duvar Dekoru">Duvar Dekoru</option>
+                        </select>
                     </div>
-                    <h3>Art Deco Lamba</h3>
-                    <p>Özel tasarımlı, LED aydınlatmalı dekoratif masa lambası.</p>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1581092921461-39b9d08a9b21?w=600" alt="3D Baskı Duvar Süsü">
+                    
+                    <div class="filter-group">
+                        <label>Malzeme:</label>
+                        <select id="materialFilter">
+                            <option value="all">Tümü</option>
+                            <option value="PLA">PLA</option>
+                            <option value="PLA + LED">PLA + LED</option>
+                        </select>
                     </div>
-                    <h3>Duvar Süsü</h3>
-                    <p>Geometrik desenli, renkli PLA malzemeden üretilmiş duvar dekorasyonu.</p>
+                    
+                    <div class="filter-group">
+                        <label>Fiyat Aralığı:</label>
+                        <select id="priceFilter">
+                            <option value="all">Tümü</option>
+                            <option value="0-200">0 - 200₺</option>
+                            <option value="200-300">200₺ - 300₺</option>
+                            <option value="300-400">300₺ - 400₺</option>
+                            <option value="400+">400₺ ve üzeri</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label>Sıralama:</label>
+                        <select id="sortFilter">
+                            <option value="default">Varsayılan</option>
+                            <option value="price-asc">Fiyat (Düşükten Yükseğe)</option>
+                            <option value="price-desc">Fiyat (Yüksekten Düşüğe)</option>
+                            <option value="name-asc">İsim (A-Z)</option>
+                            <option value="name-desc">İsim (Z-A)</option>
+                        </select>
+                    </div>
                 </div>
             </div>
+
+            <!-- Ürün Grid -->
+            <div class="product-grid" id="productGrid">
+                <!-- Ürünler JavaScript ile buraya yüklenecek -->
+            </div>
         </section>
+
+        <!-- Ürün Detay Modal -->
+        <div id="productModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div id="modalContent">
+                    <!-- Ürün detayları JavaScript ile buraya yüklenecek -->
+                </div>
+            </div>
+        </div>
 
         <section id="hakkimizda" class="about">
             <h2>Hakkımızda</h2>
