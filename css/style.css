@@ -861,3 +861,8 @@ footer {
         padding: 1.5rem;
     }
 }
+
+/* Scroll Margin için genel ayar */
+#anasayfa, #urunler, #hakkimizda, #sss, #iletisim {
+    scroll-margin-top: 80px; /* Navbar yüksekliği + ekstra boşluk */
+}
