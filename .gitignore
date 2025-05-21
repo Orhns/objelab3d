@@ -10,4 +10,7 @@ Thumbs.db
 
 # Geçici dosyalar
 *.log
-*.tmp 
+*.tmp
+
+# Ürün yönetimi klasörü
+urun_yonetimi/ 

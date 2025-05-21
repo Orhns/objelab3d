@@ -1,17 +1,13 @@
-{
-  "products": [
-    {
-      "id": 1,
-      "name": "asdasd",
-      "category": "Dekoratif",
-      "description": "asdasdasd",
-      "material": "asdasdasd",
-      "dimensions": "111",
-      "price": "₺1111.00",
-      "features": [
-        "asdasa"
-      ],
-      "image": "images/product_1747784068774.jpg"
-    }
-  ]
-}
+[
+  {
+    "Id": "62ac78f2-b6ff-45b2-9c6e-29ec3d2f8e8a",
+    "Name": "vavavavavavaadf",
+    "Description": "sdfsfds",
+    "Price": 500.0,
+    "ImagePath": "C:\\\\Users\\\\Phoenix\\\\Documents\\\\GitHub\\\\objelab3d\\images\\26b6db93-fbd9-4d66-bac9-c7b8385e5365.jpg",
+    "Features": [],
+    "CreatedAt": "2025-05-21T14:06:55.031748+03:00",
+    "UpdatedAt": null,
+    "Exported": false
+  }
+]
