@@ -290,4 +290,27 @@ document.addEventListener('DOMContentLoaded', function() {
             this.classList.toggle('active');
         });
     });
+});
+
+// Scroll olayını dinle ve kayan yazıyı güncelle
+document.addEventListener('scroll', function() {
+    const marqueeContainer = document.querySelector('.marquee-container');
+    const marqueeTexts = document.querySelectorAll('.marquee-text');
+    const scrollPosition = window.scrollY;
+    const windowHeight = window.innerHeight;
+    
+    // Scroll oranını hesapla (0 ile 1 arasında)
+    const scrollRatio = Math.min(scrollPosition / (windowHeight * 0.8), 1);
+    
+    // Font boyutunu hesapla (8rem'den 4rem'e)
+    const fontSize = 8 - (scrollRatio * 4);
+    
+    // Opaklığı hesapla (0.05'den 0.8'e)
+    const opacity = 0.05 + (scrollRatio * 0.75);
+    
+    // Tüm marquee text elementlerine uygula
+    marqueeTexts.forEach(text => {
+        text.style.fontSize = `${fontSize}rem`;
+        text.style.color = `rgba(44, 62, 80, ${opacity})`;
+    });
 }); 

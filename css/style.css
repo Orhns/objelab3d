@@ -1,4 +1,5 @@
 /* Font import */
+@import url('https://fonts.googleapis.com/css2?family=Plaster&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
 
 /* Coral Pixels font tanımı */
@@ -865,4 +866,52 @@ footer {
 /* Scroll Margin için genel ayar */
 #anasayfa, #urunler, #hakkimizda, #sss, #iletisim {
     scroll-margin-top: 80px; /* Navbar yüksekliği + ekstra boşluk */
+}
+
+/* Kayan Yazı Stili */
+.marquee-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    background: transparent;
+    z-index: 10;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+}
+
+.marquee {
+    white-space: nowrap;
+    display: flex;
+    animation: marquee 20s linear infinite;
+}
+
+.marquee-text {
+    font-family: 'Plaster', cursive;
+    font-size: 8rem;
+    color: rgba(44, 62, 80, 0.05);
+    padding-right: 50px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    will-change: font-size, color;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
 }
