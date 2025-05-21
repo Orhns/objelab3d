@@ -1,15 +1,49 @@
 [
   {
     "id": "ac8fa9bf-3d24-4959-80ac-c8548cd07b61",
-    "name": "Deneme 1234",
-    "category": "Aydınlatma",
-    "description": "Açıklama",
+    "name": "Vazo 2",
+    "category": "Vazo & Saksılar",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ultricies facilisis augue, ac convallis tortor. Maecenas ante massa, placerat quis elit nec, interdum scelerisque turpis. Quisque sagittis finibus metus, et ornare urna auctor nec. In euismod magna nunc, non malesuada mi ultrices sed. Nulla lacinia, tortor vitae vehicula imperdiet, libero risus ultricies dui, non hendrerit ex libero in neque. Quisque ultrices tortor eget eros commodo vestibulum. Proin sit amet ante sed sem lacinia iaculis. Proin varius rhoncus posuere. Maecenas consequat orci quis ligula molestie, sit amet lacinia orci volutpat. Curabitur vitae elit venenatis metus convallis aliquam. Aliquam sagittis urna egestas massa viverra egestas. Aliquam erat volutpat. Quisque maximus sem nec finibus interdum. Curabitur fermentum quis ligula quis blandit.",
     "image": "images/6d839cd6-ebcb-4815-b15e-4627891f328f.jpg",
     "material": "PLA",
-    "dimensions": "20*20*20",
-    "price": 1200.00,
+    "dimensions": "20*20*16",
+    "price": 0.0,
     "features": [
-      "asdasd"
+      "asdasd",
+      "Quisque maximus sem nec finibus interdum.",
+      "Curabitur fermentum quis ligula quis blandit.",
+      "consectetur adipiscing elit."
+    ]
+  },
+  {
+    "id": "be6f46b7-140e-43b3-abfa-7fe39e41111c",
+    "name": "Vazo 1",
+    "category": "Vazo & Saksılar",
+    "description": "Geometrik Zarafet, Modern Dokunuş.\n\nBu zarif ve göz alıcı vazo, 3D baskı teknolojisinin sunduğu yüksek hassasiyet ile PLA+ malzeme kullanılarak üretilmiştir.\nOrganik formları geometrik bir ritimle birleştiren tasarımı, modern iç mekanlara hem estetik hem de sanatsal bir dokunuş katıyor.",
+    "image": "images/04cfcfb0-014e-4de6-a357-9a94ca4c05a4.png",
+    "material": "PLA +",
+    "dimensions": "22*10",
+    "price": 0.0,
+    "features": [
+      "Yüksek kaliteli PLA+ filament ile üretilmiştir",
+      "Dayanıklı ve hafif yapı",
+      "Mat yüzey dokusu ile doğal seramik hissi"
+    ]
+  },
+  {
+    "id": "bc42b292-afc3-4884-b17b-f6343da2f446",
+    "name": "Lamba ",
+    "category": "Aydınlatma",
+    "description": "Endüstriyel Zarafet – Modern Işık.\n\nMinimalist tasarımı ve endüstriyel tarzı birleştiren bu sarkıt lamba, modern yaşam alanlarınıza karakter katmak için tasarlandı. Mat yüzeyi ve sade formu, hem klasik hem çağdaş dekorasyon stilleriyle kusursuz uyum sağlar.",
+    "image": "images/8fa917e1-6d15-4814-905c-065b986fc6da.jpg",
+    "material": "PLA +",
+    "dimensions": "25*20",
+    "price": 0.0,
+    "features": [
+      "Endüstriyel & modern tasarım",
+      "Mat siyah/beyaz renk seçeneği",
+      "E27 ampul uyumlu (ampul dahil değildir)",
+      "Ayarlanabilir kablo uzunluğu"
     ]
   }
 ]

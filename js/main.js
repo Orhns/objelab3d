@@ -271,4 +271,23 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error('Sayfa yüklenirken hata oluştu:', error);
         productGrid.innerHTML = '<p class="error-message">Bir hata oluştu. Lütfen sayfayı yenileyin.</p>';
     }
+});
+
+// SSS Accordion işlevselliği
+document.addEventListener('DOMContentLoaded', function() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        item.addEventListener('click', function() {
+            // Diğer tüm açık öğeleri kapat
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item && otherItem.classList.contains('active')) {
+                    otherItem.classList.remove('active');
+                }
+            });
+            
+            // Tıklanan öğeyi aç/kapat
+            this.classList.toggle('active');
+        });
+    });
 }); 

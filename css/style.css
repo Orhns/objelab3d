@@ -161,14 +161,15 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Products Section */
 .products {
-    padding: 5rem 5%;
+    padding: 2rem 5%;
 }
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     margin-top: 2rem;
+    padding: 0 2rem;
 }
 
 .product-filters {
@@ -202,6 +203,9 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
     position: relative;
+    width: 300px;
+    height: 400px;
+    cursor: pointer;
 }
 
 .product-card:hover {
@@ -209,7 +213,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .product-image {
-    height: 300px;
+    height: 240px;
     overflow: hidden;
     position: relative;
 }
@@ -248,12 +252,26 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 4px;
 }
 
-.product-card h3 {
-    padding: 1rem;
+.product-card p {
+    padding: 0 1rem 0.5rem;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.4;
+    max-height: 4.2em;
+    color: #666;
 }
 
-.product-card p {
-    padding: 0 1rem 1rem;
+.product-card h3 {
+    padding: 0.5rem 1rem;
+    margin: 0;
+    font-size: 1.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .product-price {
@@ -268,35 +286,38 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .product-features {
-    padding: 0 1rem 1rem;
-    font-size: 0.9rem;
+    padding: 0 1rem;
+    margin-bottom: 1rem;
 }
 
 .product-features ul {
-    list-style: none;
+    margin: 0;
     padding: 0;
+    list-style: none;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .product-features li {
     margin-bottom: 0.3rem;
     color: #666;
-}
-
-.product-features li:before {
-    content: "•";
-    color: var(--primary-color);
-    margin-right: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* About Section */
 .about {
-    padding: 5rem 5%;
+    padding: 2rem 5% 2rem 5%;
     background-color: var(--secondary-color);
 }
 
 .about-content {
     max-width: 800px;
     margin: 0 auto;
+    line-height: 1.8;
 }
 
 /* Contact Section */
@@ -371,11 +392,47 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .faq-item {
-    background: white;
+    background: #f5f5f5;
     padding: 1.5rem;
     margin-bottom: 1rem;
     border-radius: var(--border-radius);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.faq-item h3 {
+    margin: 0;
+    position: relative;
+    padding-right: 30px;
+    color: var(--primary-color);
+}
+
+.faq-item h3::after {
+    content: '+';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active h3::after {
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.faq-item p {
+    height: 0;
+    margin: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.faq-item.active p {
+    height: auto;
+    margin-top: 1rem;
+    opacity: 1;
 }
 
 /* Footer */
@@ -723,3 +780,84 @@ footer {
         letter-spacing: 2px;
     }
 } 
+
+/* Responsive tasarım için medya sorguları */
+@media screen and (max-width: 1400px) {
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .product-card {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}
+
+.info-section-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem 5%;
+    background-color: var(--secondary-color);
+}
+
+.faq-side, .contact-side {
+    padding: 1.5rem;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.faq-container, .contact-container {
+    height: 100%;
+}
+
+.faq-item {
+    background: #f5f5f5;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+}
+
+.faq-item:last-child {
+    margin-bottom: 0;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-family: inherit;
+}
+
+/* Responsive düzenleme */
+@media screen and (max-width: 768px) {
+    .info-section-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .faq-side, .contact-side {
+        padding: 1.5rem;
+    }
+}

@@ -124,40 +124,59 @@
         <section id="hakkimizda" class="about">
             <h2>Hakkımızda</h2>
             <div class="about-content">
-                <p>3D baskı tutkumuz ve el yapımı tasarım aşkımızla, her bir ürünü özenle üretiyoruz. Kalite ve yaratıcılığı bir araya getirerek, evinize özel parçalar sunuyoruz.</p>
+                <p>Merakla başlayan bir yolculuk, tasarımla buluştu.
+
+                    Çocukluğumdan beri bir şeyler üretmeye, denemeye ve bozup yeniden yapmaya karşı büyük bir merakım vardı. Üniversitede Yönetim Bilişim Sistemleri bölümünden mezun olduktan sonra yaşadığım kısa bir boşluk döneminde bu merakımı yeniden keşfettim. Bu süreçte kendi kendime IoT cihazları tasarlamaya başladım, elektronik öğrendim ve her geçen gün daha iyisini yapmak için çalıştım.
+                    
+                    Yaptığım cihazlara özel kutular üretmek için bir 3D yazıcı almam, aslında bu serüvenin dönüm noktası oldu. O ilk baskıyla birlikte yepyeni bir dünya açıldı önüme: 3D modelleme. O günden bu yana hem teknik becerilerimi geliştiriyor hem de hayal gücümü somut ürünlere dönüştürüyorum.
+                    
+                    Bugün, bu tutkuyu sizinle paylaşmak ve yaşam alanlarınıza estetik, işlevsel ve özgün ürünler katmak için çalışıyorum. Her tasarım; bir fikirden, bir ihtiyaçtan ya da sadece güzel bir form arayışından doğuyor. Ve her baskı, bu sürecin somutlaşmış hali.</p>
             </div>
         </section>
 
-        <section id="iletisim" class="contact">
-            <h2>İletişim</h2>
-            <div class="contact-container">
-                <form class="contact-form">
-                    <input type="text" placeholder="Adınız" required>
-                    <input type="email" placeholder="E-posta Adresiniz" required>
-                    <textarea placeholder="Mesajınız" required></textarea>
-                    <button type="submit" class="submit-button">Gönder</button>
-                </form>
-                <div class="social-links">
-                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+        <!-- SSS ve İletişim Bölümü -->
+        <div class="info-section-container">
+            <!-- SSS Bölümü -->
+            <div class="faq-side">
+                <h2>Sıkça Sorulan Sorular</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                                    <h3>Ürünleriniz özelleştirilebilir mi?</h3>
+            <p>Evet, tüm ürünlerimizde renk, boyut ve tasarım özelleştirmesi yapılabilir.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Kargo süresi ne kadar?</h3>
+            <p>Siparişler 2-3 iş günü içinde kargoya verilir, 1-3 gün içinde teslim edilir.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Ödeme seçenekleriniz nelerdir?</h3>
+            <p>Kredi kartı (6 taksit), havale/EFT ve kapıda ödeme mevcuttur.</p>
+        </div>
+        <div class="faq-item">
+            <h3>İade ve değişim politikanız nedir?</h3>
+            <p>Üründe kusur olması durumunda 3 gün içinde iade/değişim yapılır.</p>
+                    </div>
                 </div>
             </div>
-        </section>
 
-        <section id="sss" class="faq">
-            <h2>Sıkça Sorulan Sorular</h2>
-            <div class="faq-container">
-                <div class="faq-item">
-                    <h3>Ürünleriniz özelleştirilebilir mi?</h3>
-                    <p>Evet, çoğu ürünümüzü isteğinize göre özelleştirebiliriz.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Kargo süresi ne kadar?</h3>
-                    <p>Siparişleriniz 2-3 iş günü içinde kargoya verilir.</p>
+            <!-- İletişim Bölümü -->
+            <div class="contact-side">
+                <h2>İletişim</h2>
+                <div class="contact-container">
+                    <form class="contact-form">
+                        <input type="text" placeholder="Adınız" required>
+                        <input type="email" placeholder="E-posta Adresiniz" required>
+                        <textarea rows="5" placeholder="Mesajınız" required></textarea>
+                        <button type="submit" class="submit-button">Gönder</button>
+                    </form>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
     </main>
 
     <footer>
@@ -165,5 +184,26 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script>
+        // SSS Accordion işlevselliği
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Diğer tüm açık öğeleri kapat
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Tıklanan öğeyi aç/kapat
+                    this.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+    <script src="js/faq.js"></script>
 </body>
 </html> 
