@@ -78,22 +78,23 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 0 5%;
+    padding-top: 80px;
     position: relative;
-    overflow: hidden;
 }
 
 .hero-content {
-    max-width: 600px;
+    flex: 1;
+    max-width: 50%;
     z-index: 2;
 }
 
 .hero-image {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 50%;
-    height: 100%;
-    overflow: hidden;
+    flex: 1;
+    height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
 .hero-image img {
@@ -569,4 +570,79 @@ footer {
         margin: 10% auto;
         width: 95%;
     }
+}
+
+#3d-model-container {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* 3D Cube Styles */
+.cube-container {
+    width: 300px;
+    height: 300px;
+    perspective: 1000px;
+    margin: auto;
+}
+
+.cube {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rotate 20s infinite linear;
+}
+
+.face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: var(--primary-color);
+    opacity: 0.9;
+    transition: transform 0.3s;
+}
+
+.front  { transform: rotateY(0deg) translateZ(150px); }
+.back   { transform: rotateY(180deg) translateZ(150px); }
+.right  { transform: rotateY(90deg) translateZ(150px); }
+.left   { transform: rotateY(-90deg) translateZ(150px); }
+.top    { transform: rotateX(90deg) translateZ(150px); }
+.bottom { transform: rotateX(-90deg) translateZ(150px); }
+
+@keyframes rotate {
+    from {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+    to {
+        transform: rotateX(360deg) rotateY(360deg);
+    }
+}
+
+/* Hover effect for cube */
+.cube-container:hover .cube {
+    animation-play-state: paused;
+}
+
+/* Responsive adjustments for cube */
+@media screen and (max-width: 768px) {
+    .cube-container {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .front  { transform: rotateY(0deg) translateZ(100px); }
+    .back   { transform: rotateY(180deg) translateZ(100px); }
+    .right  { transform: rotateY(90deg) translateZ(100px); }
+    .left   { transform: rotateY(-90deg) translateZ(100px); }
+    .top    { transform: rotateX(90deg) translateZ(100px); }
+    .bottom { transform: rotateX(-90deg) translateZ(100px); }
 } 
