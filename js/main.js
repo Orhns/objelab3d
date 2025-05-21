@@ -45,72 +45,40 @@ if (contactForm) {
 async function loadProducts() {
     try {
         console.log('Ürünler yükleniyor...');
-        // Tam yolu kullanarak yükleme yapıyoruz
-        const response = await fetch('/js/products.json');
+        // Base URL'yi al
+        const baseUrl = window.location.origin;
+        const response = await fetch(`${baseUrl}/js/products.json`);
+        console.log('Sunucu yanıtı:', response.status, response.statusText);
         
         if (!response.ok) {
+            console.error('HTTP Hata:', response.status, response.statusText);
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         
-        const data = await response.json();
-        console.log('JSON verisi yüklendi:', data);
+        const text = await response.text();
+        console.log('JSON içeriği:', text);
         
-        if (!data.products || !Array.isArray(data.products)) {
+        if (!text.trim()) {
+            console.error('Boş JSON yanıtı');
+            throw new Error('Boş JSON yanıtı');
+        }
+        
+        const data = JSON.parse(text);
+        console.log('Parse edilmiş veri:', data);
+        
+        if (!Array.isArray(data)) {
+            console.error('Geçersiz veri formatı:', typeof data);
             throw new Error('Geçersiz ürün verisi');
         }
         
-        console.log('Yüklenen ürün sayısı:', data.products.length);
-        return data.products;
+        return data;
     } catch (error) {
         console.error('Ürünler yüklenirken hata oluştu:', error);
-        // Hata durumunda varsayılan ürünleri döndür
-        return [
-            {
-                "id": 1,
-                "name": "Geometrik Vazo",
-                "category": "Dekoratif",
-                "description": "Modern tasarımlı, dayanıklı PLA malzemeden üretilmiş dekoratif vazo.",
-                "image": "images/product-vase.jpg",
-                "material": "PLA",
-                "dimensions": "20x20x30 cm",
-                "price": "₺299.99",
-                "features": [
-                    "Dayanıklı PLA malzeme",
-                    "Modern geometrik tasarım",
-                    "Suyu geçirmez yüzey"
-                ]
-            },
-            {
-                "id": 2,
-                "name": "Art Deco Lamba",
-                "category": "Aydınlatma",
-                "description": "Özel tasarımlı, LED aydınlatmalı dekoratif masa lambası.",
-                "image": "images/product-lamp.jpg",
-                "material": "PLA + LED",
-                "dimensions": "15x15x25 cm",
-                "price": "₺399.99",
-                "features": [
-                    "Enerji tasarruflu LED",
-                    "Art Deco tasarım",
-                    "Ayarlanabilir parlaklık"
-                ]
-            },
-            {
-                "id": 3,
-                "name": "Duvar Süsü",
-                "category": "Duvar Dekoru",
-                "description": "Geometrik desenli, renkli PLA malzemeden üretilmiş duvar dekorasyonu.",
-                "image": "images/product-wall-art.png",
-                "material": "PLA",
-                "dimensions": "40x40x5 cm",
-                "price": "₺249.99",
-                "features": [
-                    "Renkli PLA malzeme",
-                    "Geometrik desen",
-                    "Kolay montaj"
-                ]
-            }
-        ];
+        console.error('Hata detayı:', error.stack);
+        if (error instanceof SyntaxError) {
+            console.error('JSON ayrıştırma hatası');
+        }
+        return [];
     }
 }
 
@@ -123,11 +91,11 @@ function createProductCard(product) {
     
     return `
         <div class="product-card" 
-            data-category="${product.category}"
-            data-material="${product.material}"
-            data-price="${product.price.replace('₺', '')}"
-            data-name="${product.name.toLowerCase()}"
-            onclick="showProductDetail(${product.id})"
+            data-category="${product.category || ''}"
+            data-material="${product.material || ''}"
+            data-price="${product.price}"
+            data-name="${(product.name || '').toLowerCase()}"
+            onclick="showProductDetail('${product.id}')"
         >
             <div class="product-image">
                 <img 
@@ -137,19 +105,19 @@ function createProductCard(product) {
                     onerror="console.error('Görsel yüklenemedi:', '${imagePath}'); this.onerror=null; this.src='images/placeholder.jpg';"
                 >
                 <div class="product-overlay">
-                    <span class="product-category">${product.category}</span>
+                    <span class="product-category">${product.category || ''}</span>
                 </div>
-                <div class="product-price">${product.price}</div>
+                <div class="product-price">${product.price} ₺</div>
             </div>
-            <h3>${product.name}</h3>
-            <p>${product.description}</p>
+            <h3>${product.name || ''}</h3>
+            <p>${product.description || ''}</p>
             <div class="product-details">
-                <span class="material">${product.material}</span>
-                <span class="size">${product.dimensions}</span>
+                <span class="material">${product.material || ''}</span>
+                <span class="size">${product.dimensions || ''}</span>
             </div>
             <div class="product-features">
                 <ul>
-                    ${product.features.map(feature => `<li>${feature}</li>`).join('')}
+                    ${(product.features || []).map(feature => `<li>${feature}</li>`).join('')}
                 </ul>
             </div>
         </div>
@@ -168,16 +136,16 @@ function showProductDetail(productId) {
         <div class="product-detail">
             <img src="${product.image}" alt="${product.name}" class="product-detail-image">
             <div class="product-detail-info">
-                <h2>${product.name}</h2>
-                <div class="product-detail-price">${product.price}</div>
-                <p>${product.description}</p>
+                <h2>${product.name || ''}</h2>
+                <div class="product-detail-price">${product.price} ₺</div>
+                <p>${product.description || ''}</p>
                 <div class="product-details">
-                    <span class="material">${product.material}</span>
-                    <span class="size">${product.dimensions}</span>
+                    <span class="material">${product.material || ''}</span>
+                    <span class="size">${product.dimensions || ''}</span>
                 </div>
                 <h3>Özellikler</h3>
                 <ul class="product-detail-features">
-                    ${product.features.map(feature => `<li>${feature}</li>`).join('')}
+                    ${(product.features || []).map(feature => `<li>${feature}</li>`).join('')}
                 </ul>
             </div>
         </div>
@@ -205,8 +173,8 @@ function filterProducts() {
     // Arama filtresi
     if (searchTerm) {
         filteredProducts = filteredProducts.filter(product => 
-            product.name.toLowerCase().includes(searchTerm) ||
-            product.description.toLowerCase().includes(searchTerm)
+            (product.name || '').toLowerCase().includes(searchTerm) ||
+            (product.description || '').toLowerCase().includes(searchTerm)
         );
     }
     
@@ -227,7 +195,7 @@ function filterProducts() {
     // Fiyat filtresi
     if (priceRange !== 'all') {
         filteredProducts = filteredProducts.filter(product => {
-            const price = parseFloat(product.price.replace('₺', ''));
+            const price = parseFloat(product.price);
             switch(priceRange) {
                 case '0-200': return price <= 200;
                 case '200-300': return price > 200 && price <= 300;
@@ -241,20 +209,16 @@ function filterProducts() {
     // Sıralama
     switch(sortBy) {
         case 'price-asc':
-            filteredProducts.sort((a, b) => 
-                parseFloat(a.price.replace('₺', '')) - parseFloat(b.price.replace('₺', ''))
-            );
+            filteredProducts.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
             break;
         case 'price-desc':
-            filteredProducts.sort((a, b) => 
-                parseFloat(b.price.replace('₺', '')) - parseFloat(a.price.replace('₺', ''))
-            );
+            filteredProducts.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
             break;
         case 'name-asc':
-            filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+            filteredProducts.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
             break;
         case 'name-desc':
-            filteredProducts.sort((a, b) => b.name.localeCompare(a.name));
+            filteredProducts.sort((a, b) => (b.name || '').localeCompare(a.name || ''));
             break;
     }
     
@@ -276,6 +240,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
         products = await loadProducts();
         console.log('Yüklenen ürün sayısı:', products.length);
+        console.log('Yüklenen ürünler:', products);
         
         if (products.length === 0) {
             productGrid.innerHTML = '<p class="error-message">Ürünler yüklenirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.</p>';

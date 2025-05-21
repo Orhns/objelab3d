@@ -1,13 +1,15 @@
 [
   {
-    "Id": "62ac78f2-b6ff-45b2-9c6e-29ec3d2f8e8a",
-    "Name": "vavavavavavaadf",
-    "Description": "sdfsfds",
-    "Price": 500.0,
-    "ImagePath": "C:\\\\Users\\\\Phoenix\\\\Documents\\\\GitHub\\\\objelab3d\\images\\26b6db93-fbd9-4d66-bac9-c7b8385e5365.jpg",
-    "Features": [],
-    "CreatedAt": "2025-05-21T14:06:55.031748+03:00",
-    "UpdatedAt": null,
-    "Exported": false
+    "id": "ac8fa9bf-3d24-4959-80ac-c8548cd07b61",
+    "name": "Deneme 1234",
+    "category": "Aydınlatma",
+    "description": "Açıklama",
+    "image": "images/6d839cd6-ebcb-4815-b15e-4627891f328f.jpg",
+    "material": "PLA",
+    "dimensions": "20*20*20",
+    "price": 1200.00,
+    "features": [
+      "asdasd"
+    ]
   }
 ]

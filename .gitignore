@@ -12,5 +12,18 @@ Thumbs.db
 *.log
 *.tmp
 
-# Ürün yönetimi klasörü
-urun_yonetimi/ 
+# Windows Forms uygulaması klasörleri
+urun_yonetimi/
+*.exe
+*.pdb
+*.dll
+
+# Visual Studio dosyaları
+.vs/
+*.suo
+*.user
+*.sln
+*.csproj
+
+# Dökümantasyon
+README.md 
