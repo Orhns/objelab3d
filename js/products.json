@@ -1,49 +1,17 @@
 {
-    "products": [
-        {
-            "id": 1,
-            "name": "Geometrik Vazo",
-            "category": "Dekoratif",
-            "description": "Modern tasarımlı, dayanıklı PLA malzemeden üretilmiş dekoratif vazo.",
-            "image": "images/product-vase.jpg",
-            "material": "PLA",
-            "dimensions": "20x20x30 cm",
-            "price": "₺299.99",
-            "features": [
-                "Dayanıklı PLA malzeme",
-                "Modern geometrik tasarım",
-                "Suyu geçirmez yüzey"
-            ]
-        },
-        {
-            "id": 2,
-            "name": "Art Deco Lamba",
-            "category": "Aydınlatma",
-            "description": "Özel tasarımlı, LED aydınlatmalı dekoratif masa lambası.",
-            "image": "images/product-lamp.jpg",
-            "material": "PLA + LED",
-            "dimensions": "15x15x25 cm",
-            "price": "₺399.99",
-            "features": [
-                "Enerji tasarruflu LED",
-                "Art Deco tasarım",
-                "Ayarlanabilir parlaklık"
-            ]
-        },
-        {
-            "id": 3,
-            "name": "Duvar Süsü",
-            "category": "Duvar Dekoru",
-            "description": "Geometrik desenli, renkli PLA malzemeden üretilmiş duvar dekorasyonu.",
-            "image": "images/product-wall-art.png",
-            "material": "PLA",
-            "dimensions": "40x40x5 cm",
-            "price": "₺249.99",
-            "features": [
-                "Renkli PLA malzeme",
-                "Geometrik desen",
-                "Kolay montaj"
-            ]
-        }
-    ]
-} 
+  "products": [
+    {
+      "id": 1,
+      "name": "asdasd",
+      "category": "Dekoratif",
+      "description": "asdasdasd",
+      "material": "asdasdasd",
+      "dimensions": "111",
+      "price": "₺1111.00",
+      "features": [
+        "asdasa"
+      ],
+      "image": "images/product_1747784068774.jpg"
+    }
+  ]
+}
