@@ -44,6 +44,10 @@ body {
     font-family: 'Poetsen One', cursive;
     line-height: 1.6;
     color: var(--text-color);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -342,6 +346,10 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0.8rem;
     border: 1px solid #ddd;
     border-radius: var(--border-radius);
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
 }
 
 .contact-form textarea {
@@ -524,6 +532,10 @@ footer {
     border: 1px solid #ddd;
     border-radius: var(--border-radius);
     font-size: 1rem;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
 }
 
 .search-btn {
@@ -563,6 +575,10 @@ footer {
     border-radius: var(--border-radius);
     font-size: 1rem;
     background: white;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
 }
 
 /* Modal Styles */
@@ -850,6 +866,10 @@ footer {
     border: 1px solid #ddd;
     border-radius: var(--border-radius);
     font-family: inherit;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
 }
 
 /* Responsive düzenleme */
