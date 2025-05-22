@@ -935,3 +935,16 @@ footer {
         transform: translateX(-50%);
     }
 }
+
+/* Bilgi Mesajı Stili */
+.info-message {
+    background-color: rgba(127, 255, 212, 0.3);
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 800px;
+    margin: 2rem auto 0;
+    font-style: italic;
+    color: var(--primary-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
