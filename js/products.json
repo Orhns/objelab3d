@@ -1,10 +1,10 @@
 [
   {
     "id": "ac8fa9bf-3d24-4959-80ac-c8548cd07b61",
-    "name": "Vazo 2",
+    "name": "Lorem Ipsu",
     "category": "Vazo & Saksılar",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ultricies facilisis augue, ac convallis tortor. Maecenas ante massa, placerat quis elit nec, interdum scelerisque turpis. Quisque sagittis finibus metus, et ornare urna auctor nec. In euismod magna nunc, non malesuada mi ultrices sed. Nulla lacinia, tortor vitae vehicula imperdiet, libero risus ultricies dui, non hendrerit ex libero in neque. Quisque ultrices tortor eget eros commodo vestibulum. Proin sit amet ante sed sem lacinia iaculis. Proin varius rhoncus posuere. Maecenas consequat orci quis ligula molestie, sit amet lacinia orci volutpat. Curabitur vitae elit venenatis metus convallis aliquam. Aliquam sagittis urna egestas massa viverra egestas. Aliquam erat volutpat. Quisque maximus sem nec finibus interdum. Curabitur fermentum quis ligula quis blandit.",
-    "image": "images/6d839cd6-ebcb-4815-b15e-4627891f328f.jpg",
+    "image": "images/fce5f67b-d475-44d4-990b-170f1d151765.png",
     "material": "PLA",
     "dimensions": "20*20*16",
     "price": 0.0,
@@ -17,12 +17,12 @@
   },
   {
     "id": "be6f46b7-140e-43b3-abfa-7fe39e41111c",
-    "name": "Vazo 1",
+    "name": "Lorem",
     "category": "Vazo & Saksılar",
-    "description": "Geometrik Zarafet, Modern Dokunuş.\n\nBu zarif ve göz alıcı vazo, 3D baskı teknolojisinin sunduğu yüksek hassasiyet ile PLA+ malzeme kullanılarak üretilmiştir.\nOrganik formları geometrik bir ritimle birleştiren tasarımı, modern iç mekanlara hem estetik hem de sanatsal bir dokunuş katıyor.",
-    "image": "images/04cfcfb0-014e-4de6-a357-9a94ca4c05a4.png",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada feugiat dui. Vestibulum vestibulum feugiat ex, egestas euismod tortor sollicitudin sed. Fusce laoreet tincidunt ex, vel ultricies orci pretium id. Nulla ultrices varius nunc, id congue neque. Suspendisse potenti. Maecenas molestie risus id ex facilisis tincidunt. Vestibulum vitae mollis magna. Suspendisse iaculis hendrerit quam, eu lacinia ligula imperdiet sit amet. Duis eget neque tortor. Ut interdum venenatis sem sit amet dignissim. Morbi tortor lectus, ultricies sit amet elementum a, sagittis ac massa. Quisque nec erat vitae dui dapibus iaculis. Nunc lobortis a metus in mattis.",
+    "image": "images/f28ecf3d-e6ee-4e76-b9c5-7b7c91bc1f58.png",
     "material": "PLA +",
-    "dimensions": "22*10",
+    "dimensions": "30*15",
     "price": 0.0,
     "features": [
       "Yüksek kaliteli PLA+ filament ile üretilmiştir",
@@ -32,12 +32,12 @@
   },
   {
     "id": "bc42b292-afc3-4884-b17b-f6343da2f446",
-    "name": "Lamba ",
-    "category": "Aydınlatma",
-    "description": "Endüstriyel Zarafet – Modern Işık.\n\nMinimalist tasarımı ve endüstriyel tarzı birleştiren bu sarkıt lamba, modern yaşam alanlarınıza karakter katmak için tasarlandı. Mat yüzeyi ve sade formu, hem klasik hem çağdaş dekorasyon stilleriyle kusursuz uyum sağlar.",
-    "image": "images/8fa917e1-6d15-4814-905c-065b986fc6da.jpg",
+    "name": "Lorem Ipsum",
+    "category": "Vazo & Saksılar",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada feugiat dui. Vestibulum vestibulum feugiat ex, egestas euismod tortor sollicitudin sed. Fusce laoreet tincidunt ex, vel ultricies orci pretium id. Nulla ultrices varius nunc, id congue neque. Suspendisse potenti. Maecenas molestie risus id ex facilisis tincidunt. Vestibulum vitae mollis magna. Suspendisse iaculis hendrerit quam, eu lacinia ligula imperdiet sit amet. Duis eget neque tortor. Ut interdum venenatis sem sit amet dignissim. Morbi tortor lectus, ultricies sit amet elementum a, sagittis ac massa. Quisque nec erat vitae dui dapibus iaculis. Nunc lobortis a metus in mattis.",
+    "image": "images/a277ff83-db80-4ee5-9f03-6c1af7aab9e8.png",
     "material": "PLA +",
-    "dimensions": "25*20",
+    "dimensions": "35*20",
     "price": 0.0,
     "features": [
       "Endüstriyel & modern tasarım",
@@ -45,5 +45,27 @@
       "E27 ampul uyumlu (ampul dahil değildir)",
       "Ayarlanabilir kablo uzunluğu"
     ]
+  },
+  {
+    "id": "2a1470af-abf4-49fb-991b-3df9341f2324",
+    "name": "lorem ips",
+    "category": "Aydınlatma",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada feugiat dui. Vestibulum vestibulum feugiat ex, egestas euismod tortor sollicitudin sed. Fusce laoreet tincidunt ex, vel ultricies orci pretium id. Nulla ultrices varius nunc, id congue neque. Suspendisse potenti. Maecenas molestie risus id ex facilisis tincidunt. Vestibulum vitae mollis magna. Suspendisse iaculis hendrerit quam, eu lacinia ligula imperdiet sit amet. Duis eget neque tortor. Ut interdum venenatis sem sit amet dignissim. Morbi tortor lectus, ultricies sit amet elementum a, sagittis ac massa. Quisque nec erat vitae dui dapibus iaculis. Nunc lobortis a metus in mattis.",
+    "image": "images/39fb7c36-f040-4949-a6fa-5d5f48f8006c.png",
+    "material": "PLA",
+    "dimensions": "25*35",
+    "price": 0.0,
+    "features": []
+  },
+  {
+    "id": "0daa72a0-cc0a-45d8-96a6-ebc5f8f595f4",
+    "name": "lore",
+    "category": "Aydınlatma",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada feugiat dui. Vestibulum vestibulum feugiat ex, egestas euismod tortor sollicitudin sed. Fusce laoreet tincidunt ex, vel ultricies orci pretium id. Nulla ultrices varius nunc, id congue neque. Suspendisse potenti. Maecenas molestie risus id ex facilisis tincidunt. Vestibulum vitae mollis magna. Suspendisse iaculis hendrerit quam, eu lacinia ligula imperdiet sit amet. Duis eget neque tortor. Ut interdum venenatis sem sit amet dignissim. Morbi tortor lectus, ultricies sit amet elementum a, sagittis ac massa. Quisque nec erat vitae dui dapibus iaculis. Nunc lobortis a metus in mattis.",
+    "image": "images/60985b4e-5f73-42fa-a078-86743ad8208b.png",
+    "material": "PLA",
+    "dimensions": "20*40",
+    "price": 0.0,
+    "features": []
   }
 ]
