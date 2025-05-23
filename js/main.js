@@ -41,44 +41,56 @@ if (contactForm) {
     });
 }
 
+// Global değişkenler
+let products = [];
+
 // Ürünleri yükle
 async function loadProducts() {
     try {
         console.log('Ürünler yükleniyor...');
-        // Base URL'yi al
-        const baseUrl = window.location.origin;
-        const response = await fetch(`${baseUrl}/js/products.json`);
-        console.log('Sunucu yanıtı:', response.status, response.statusText);
         
+        // Fetch API ile products.json dosyasını yükle
+        const response = await fetch('./js/products.json', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }).catch(error => {
+            console.error('Fetch hatası:', error);
+            throw new Error('Ürün dosyasına erişilemedi. Lütfen internet bağlantınızı kontrol edin.');
+        });
+        
+        // Yanıt durumunu kontrol et
         if (!response.ok) {
-            console.error('HTTP Hata:', response.status, response.statusText);
-            throw new Error(`HTTP error! status: ${response.status}`);
+            throw new Error(`Sunucu hatası: ${response.status} ${response.statusText}`);
         }
         
-        const text = await response.text();
-        console.log('JSON içeriği:', text);
+        // JSON'ı parse et
+        const data = await response.json().catch(error => {
+            console.error('JSON parse hatası:', error);
+            throw new Error('Ürün verisi okunamadı. Geçersiz veri formatı.');
+        });
         
-        if (!text.trim()) {
-            console.error('Boş JSON yanıtı');
-            throw new Error('Boş JSON yanıtı');
-        }
-        
-        const data = JSON.parse(text);
-        console.log('Parse edilmiş veri:', data);
-        
+        // Veri tipini kontrol et
         if (!Array.isArray(data)) {
-            console.error('Geçersiz veri formatı:', typeof data);
-            throw new Error('Geçersiz ürün verisi');
+            throw new Error('Geçersiz veri formatı: Ürün listesi bir dizi olmalıdır.');
         }
+        
+        // Veri yapısını kontrol et
+        if (data.length === 0) {
+            console.warn('Ürün listesi boş');
+        } else {
+            console.log(`${data.length} ürün başarıyla yüklendi`);
+        }
+        
+        // Global products değişkenini güncelle
+        products = data;
         
         return data;
     } catch (error) {
-        console.error('Ürünler yüklenirken hata oluştu:', error);
-        console.error('Hata detayı:', error.stack);
-        if (error instanceof SyntaxError) {
-            console.error('JSON ayrıştırma hatası');
-        }
-        return [];
+        console.error('Ürünler yüklenirken hata oluştu:', error.message);
+        throw error;
     }
 }
 
@@ -227,31 +239,82 @@ function filterProducts() {
     productGrid.innerHTML = filteredProducts.map(product => createProductCard(product)).join('');
 }
 
+// Kategorileri yükle
+async function loadCategories() {
+    try {
+        const response = await fetch('./js/categories.json', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }).catch(error => {
+            console.error('Fetch hatası:', error);
+            throw new Error('Kategori dosyasına erişilemedi. Lütfen internet bağlantınızı kontrol edin.');
+        });
+        
+        if (!response.ok) {
+            throw new Error(`Sunucu hatası: ${response.status} ${response.statusText}`);
+        }
+        
+        const categories = await response.json().catch(error => {
+            console.error('JSON parse hatası:', error);
+            throw new Error('Kategori verisi okunamadı. Geçersiz veri formatı.');
+        });
+        
+        if (!Array.isArray(categories)) {
+            throw new Error('Geçersiz kategori verisi: Kategori listesi bir dizi olmalıdır.');
+        }
+        
+        const categoryFilter = document.getElementById('categoryFilter');
+        if (categoryFilter) {
+            // Mevcut seçenekleri temizle
+            categoryFilter.innerHTML = '<option value="all">Tümü</option>';
+            
+            // Kategorileri ekle
+            categories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category.name;
+                option.textContent = category.name;
+                categoryFilter.appendChild(option);
+            });
+        }
+        
+        return categories;
+    } catch (error) {
+        console.error('Kategoriler yüklenirken hata oluştu:', error.message);
+        throw error;
+    }
+}
+
 // Sayfa yüklendiğinde
 document.addEventListener('DOMContentLoaded', async () => {
-    console.log('Sayfa yüklendi, ürünler yükleniyor...');
+    console.log('Sayfa yüklendi, veriler yükleniyor...');
     const productGrid = document.getElementById('productGrid');
     
-    if (!productGrid) {
-        console.error('Ürün grid elementi bulunamadı!');
-        return;
-    }
-    
     try {
-        products = await loadProducts();
-        console.log('Yüklenen ürün sayısı:', products.length);
-        console.log('Yüklenen ürünler:', products);
+        // Önce kategorileri yükle
+        await loadCategories();
+        console.log('Kategoriler başarıyla yüklendi');
         
-        if (products.length === 0) {
-            productGrid.innerHTML = '<p class="error-message">Ürünler yüklenirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.</p>';
+        // Sonra ürünleri yükle
+        const loadedProducts = await loadProducts();
+        console.log('Ürünler başarıyla yüklendi:', loadedProducts.length);
+        
+        if (!productGrid) {
+            throw new Error('Ürün grid elementi bulunamadı');
+        }
+        
+        if (loadedProducts.length === 0) {
+            productGrid.innerHTML = '<p class="error-message">Henüz ürün bulunmamaktadır.</p>';
             return;
         }
         
-        // Ürünleri yükle
-        productGrid.innerHTML = products.map(product => createProductCard(product)).join('');
+        // Ürünleri görüntüle
+        productGrid.innerHTML = loadedProducts.map(product => createProductCard(product)).join('');
         console.log('Ürün kartları oluşturuldu');
         
-        // Filtreleme olaylarını ekle
+        // Event listener'ları ekle
         document.getElementById('productSearch').addEventListener('input', filterProducts);
         document.getElementById('categoryFilter').addEventListener('change', filterProducts);
         document.getElementById('materialFilter').addEventListener('change', filterProducts);
@@ -259,7 +322,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('sortFilter').addEventListener('change', filterProducts);
         
         // Modal kapatma olayını ekle
-        document.querySelector('.close-modal').addEventListener('click', closeModal);
+        const closeModalBtn = document.querySelector('.close-modal');
+        if (closeModalBtn) {
+            closeModalBtn.addEventListener('click', closeModal);
+        }
+        
         window.addEventListener('click', (e) => {
             const modal = document.getElementById('productModal');
             if (e.target === modal) {
@@ -268,8 +335,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
         
     } catch (error) {
-        console.error('Sayfa yüklenirken hata oluştu:', error);
-        productGrid.innerHTML = '<p class="error-message">Bir hata oluştu. Lütfen sayfayı yenileyin.</p>';
+        console.error('Sayfa yüklenirken hata oluştu:', error.message);
+        if (productGrid) {
+            productGrid.innerHTML = `
+                <p class="error-message">
+                    Ürünler yüklenirken bir hata oluştu.<br>
+                    Lütfen sayfayı yenileyin veya daha sonra tekrar deneyin.<br>
+                    <small>Hata: ${error.message}</small>
+                </p>`;
+        }
     }
 });
 
