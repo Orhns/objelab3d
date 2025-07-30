@@ -1,14 +1,27 @@
 [
   {
     "id": "1708df02-405b-4763-801d-e500ed8e2b5f",
-    "name": "Lambalar"
+    "name": "Lambalar",
+    "description": ""
   },
   {
     "id": "07898f73-5f56-4ad4-b772-394bc8f1b37d",
-    "name": "Aydınlatma"
+    "name": "Aydınlatma",
+    "description": null
   },
   {
     "id": "d70e954b-a458-47e0-91ae-3c3d4e8f6f69",
-    "name": "Vazo & Saksılar"
+    "name": "Vazo & Saksılar",
+    "description": null
+  },
+  {
+    "id": "0e034302-0fac-4570-b913-ece22ba7312b",
+    "name": "Masaüstü küçük objeler",
+    "description": ""
+  },
+  {
+    "id": "7140da8e-3a03-433a-a925-0812eb663c97",
+    "name": "asdasda",
+    "description": ""
   }
 ]
