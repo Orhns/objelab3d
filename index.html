@@ -250,7 +250,7 @@
                 </div>
             </div>
 
-            <!-- İletişim Bölümü -->
+            <!-- İletişim Bölümü 
             <div id="iletisim" class="contact-side">
                 <h2>İletişim</h2>
                 <div class="contact-container">
@@ -266,7 +266,53 @@
                         <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
+            </div>-->
+            <!-- İletişim Bölümü -->
+            <div id="iletisim" class="contact-side">
+                <h2>İletişim</h2>
+                <div class="contact-container">
+                    <form class="contact-form" id="iletisimForm">
+                        <input type="text" name="name" placeholder="Adınız" required>
+                        <input type="email" name="email" placeholder="E-posta Adresiniz" required>
+                        <textarea name="message" rows="5" placeholder="Mesajınız" required></textarea>
+                        <button type="submit" class="submit-button">Gönder</button>
+                    </form>
+
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
             </div>
+
+            <script>
+            const form = document.getElementById("iletisimForm");
+            form.addEventListener("submit", function (e) {
+                e.preventDefault();
+                
+                const data = {
+                name: form.name.value,
+                email: form.email.value,
+                message: form.message.value
+                };
+
+                fetch("https://script.google.com/a/macros/objelab3d.com/s/AKfycbxQqkR5F3sC9HPR2U26eBG_2_djyMrEpk59uZ8A0okRdG2VwAacIt5pg4L3PMGao0Xh/exec", {
+                method: "POST",
+                body: JSON.stringify(data)
+                })
+                .then(res => res.text())
+                .then(response => {
+                alert("Mesajınız başarıyla gönderildi!");
+                form.reset();
+                })
+                .catch(err => {
+                alert("Hata oluştu. Lütfen tekrar deneyin.");
+                console.error(err);
+                });
+            });
+            </script>
+
         </div>
     </main>
 
