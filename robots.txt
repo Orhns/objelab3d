@@ -8,4 +8,6 @@ User-agent: ia_archiver-web.archive.org
 Disallow: /
 
 User-agent: *
-Allow: / 
+Allow: /
+
+Sitemap: https://objelab3d.com/sitemap.xml 
