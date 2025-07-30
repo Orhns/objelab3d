@@ -254,6 +254,7 @@
                     <form class="contact-form" id="iletisimForm">
                         <input type="text" name="name" placeholder="Adınız" required>
                         <input type="email" name="email" placeholder="E-posta Adresiniz" required>
+                        <input type="tel" name="phone" placeholder="Telefon Numaranız" pattern="[0-9+()\- ]{7,20}" title="Lütfen geçerli bir telefon numarası giriniz" required>
                         <textarea name="message" rows="5" placeholder="Mesajınız" required></textarea>
                         <div class="g-recaptcha" data-sitekey="6LdYbZQrAAAAAHZLGNzQeeiBEeKW3RnRWod6w1BS"></div>
                         <button type="submit" class="submit-button">Gönder</button>
@@ -282,6 +283,7 @@
                 const data = {
                 name: form.name.value,
                 email: form.email.value,
+                phone: form.phone.value,
                 message: form.message.value,
                 "g-recaptcha-response": recaptchaResponse
                 };
