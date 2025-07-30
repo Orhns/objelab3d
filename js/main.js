@@ -36,7 +36,7 @@ if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
         // Burada form verilerini işleyebilir veya bir API'ye gönderebilirsiniz
-        alert('Mesajınız gönderildi! (Demo amaçlı)');
+        //alert('Mesajınız gönderildi! (Demo amaçlı)');
         contactForm.reset();
     });
 }
