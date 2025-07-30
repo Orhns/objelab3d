@@ -254,7 +254,7 @@
                     <form class="contact-form" id="iletisimForm">
                         <input type="text" name="name" placeholder="Adınız" required>
                         <input type="email" name="email" placeholder="E-posta Adresiniz" required>
-                        <input type="tel" name="phone" placeholder="Telefon Numaranız" pattern="[0-9+()\- ]{7,20}" title="Lütfen geçerli bir telefon numarası giriniz" required>
+                        <input type="tel" id="phone" placeholder="Telefon Numaranız" inputmode="numeric" pattern="[0-9+ ]*" required/>
                         <textarea name="message" rows="5" placeholder="Mesajınız" required></textarea>
                         <div class="g-recaptcha" data-sitekey="6LdYbZQrAAAAAHZLGNzQeeiBEeKW3RnRWod6w1BS"></div>
                         <button type="submit" class="submit-button">Gönder</button>
@@ -267,7 +267,29 @@
                     </div>
                 </div>
             </div>
-
+            <script src="https://unpkg.com/inputmask@5.0.8/dist/inputmask.min.js"></script>
+            <script>
+                const phoneInput = document.getElementById("phone");
+              
+                const mask = new Inputmask({
+                  mask: "5## ### ## ##",
+                  placeholder: "_",
+                  definitions: {
+                    '#': {
+                        validator: "[0-9]",
+                        cardinality: 1,
+                        definitionSymbol: "#"
+                    }
+                  },
+                  showMaskOnHover: false,
+                  showMaskOnFocus: true,
+                  autoUnmask: false,
+                });
+              
+                mask.mask(phoneInput);
+              </script>
+              
+            
             <script>
             const form = document.getElementById("iletisimForm");
             form.addEventListener("submit", function (e) {
@@ -334,6 +356,9 @@
             });
         });
     </script>
+    
+
+    <!-- <script src="js/phone-format.js"></script> -->
     <script src="js/faq.js"></script>
     <script src="https://www.google.com/recaptcha/api.js?hl=tr" async defer></script>
 </body>
