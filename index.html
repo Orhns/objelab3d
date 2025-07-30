@@ -275,6 +275,7 @@
                         <input type="text" name="name" placeholder="Adınız" required>
                         <input type="email" name="email" placeholder="E-posta Adresiniz" required>
                         <textarea name="message" rows="5" placeholder="Mesajınız" required></textarea>
+                        <div class="g-recaptcha" data-sitekey="6LdYbZQrAAAAAHZLGNzQeeiBEeKW3RnRWod6w1BS"></div>
                         <button type="submit" class="submit-button">Gönder</button>
                     </form>
 
@@ -291,10 +292,18 @@
             form.addEventListener("submit", function (e) {
                 e.preventDefault();
                 
+                // reCAPTCHA kontrolü
+                var recaptchaResponse = grecaptcha.getResponse();
+                if (!recaptchaResponse) {
+                    alert("Lütfen robot olmadığınızı doğrulayın.");
+                    return;
+                }
+
                 const data = {
                 name: form.name.value,
                 email: form.email.value,
-                message: form.message.value
+                message: form.message.value,
+                "g-recaptcha-response": recaptchaResponse
                 };
 
                 fetch("https://script.google.com/a/macros/objelab3d.com/s/AKfycbxQqkR5F3sC9HPR2U26eBG_2_djyMrEpk59uZ8A0okRdG2VwAacIt5pg4L3PMGao0Xh/exec", {
@@ -305,9 +314,11 @@
                 .then(response => {
                 alert("Mesajınız başarıyla gönderildi!");
                 form.reset();
+                grecaptcha.reset();
                 })
                 .catch(err => {
                 alert("Hata oluştu. Lütfen tekrar deneyin.");
+                grecaptcha.reset();
                 console.error(err);
                 });
             });
@@ -342,5 +353,6 @@
         });
     </script>
     <script src="js/faq.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 </html> 
