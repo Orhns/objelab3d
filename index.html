@@ -419,60 +419,38 @@
                 spinner.style.display = 'block';
                 buttonText.textContent = 'Gönderiliyor...';
 
-                const data = {
-                name: form.name.value,
-                email: form.email.value,
-                phone: form.phone.value,
-                message: form.message.value,
-                "g-recaptcha-response": recaptchaResponse
-                };
+                try {
+                    const formData = new FormData();
+                    formData.append('name', form.name.value);
+                    formData.append('email', form.email.value);
+                    formData.append('phone', form.phone.value);
+                    formData.append('message', form.message.value);
+                    formData.append('g-recaptcha-response', recaptchaResponse);
 
-                // Form verilerini işle ve gönder
-                const FORM_ENDPOINT = window.atob('aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNyb3Mvcy9BS2Z5Y2J6N2dGMzFfOWljdmlleGcyNlVMclBXc3BWcjB1N0xWSzV1eGU0dFNtOTdzYVdNVGd2WVFBMHRSdnF2VjFqR0EwZUZjQS9leGVj');
-                
-                // XSS koruması için veriyi temizle
-                const sanitizeInput = (str) => {
-                    const div = document.createElement('div');
-                    div.textContent = str;
-                    return div.innerHTML;
-                };
+                    const FORM_ENDPOINT = window.atob('aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNyb3Mvcy9BS2Z5Y2J6N2dGMzFfOWljdmlleGcyNlVMclBXc3BWcjB1N0xWSzV1eGU0dFNtOTdzYVdNVGd2WVFBMHRSdnF2VjFqR0EwZUZjQS9leGVj');
 
-                // Veriyi temizle
-                const sanitizedData = {
-                    name: sanitizeInput(data.name),
-                    email: sanitizeInput(data.email),
-                    phone: sanitizeInput(data.phone),
-                    message: sanitizeInput(data.message),
-                    "g-recaptcha-response": data["g-recaptcha-response"]
-                };
+                    const response = await fetch(FORM_ENDPOINT, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        body: formData
+                    });
 
-                fetch(FORM_ENDPOINT, {
-                    method: "POST",
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-Requested-With': 'XMLHttpRequest'
-                    },
-                    body: JSON.stringify(sanitizedData)
-                })
-                .then(res => res.text())
-                .then(response => {
-                    // Form başarıyla gönderildiğinde rate limit zamanını güncelle
+                    // no-cors modunda response.ok kontrolü yapılamaz
+                    // Bu yüzden başarılı kabul ediyoruz
                     localStorage.setItem('lastFormSubmit', Date.now().toString());
                     alert("Mesajınız başarıyla gönderildi!");
                     form.reset();
                     grecaptcha.reset();
-                })
-                .catch(err => {
-                    alert("Hata oluştu. Lütfen tekrar deneyin.");
-                    grecaptcha.reset();
-                    console.error(err);
-                })
-                .finally(() => {
-                    // Form gönderimi tamamlandığında
+                } catch (error) {
+                    console.error('Form gönderimi hatası:', error);
+                    alert("Mesaj gönderilirken bir hata oluştu. Lütfen daha sonra tekrar deneyiniz.");
+                } finally {
                     submitButton.disabled = false;
                     spinner.style.display = 'none';
                     buttonText.textContent = 'Gönder';
-                });
+                }
+
+
             });
             </script>
 
