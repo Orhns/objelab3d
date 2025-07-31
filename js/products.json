@@ -29,32 +29,5 @@
       "Dayanıklı ve hafif yapı",
       "Mat yüzey dokusu ile doğal seramik hissi"
     ]
-  },
-  {
-    "id": "bc42b292-afc3-4884-b17b-f6343da2f446",
-    "name": "Lorem Ipsum",
-    "category": "Dekoratif Objeler",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada feugiat dui. Vestibulum vestibulum feugiat ex, egestas euismod tortor sollicitudin sed. Fusce laoreet tincidunt ex, vel ultricies orci pretium id. Nulla ultrices varius nunc, id congue neque. Suspendisse potenti. Maecenas molestie risus id ex facilisis tincidunt. Vestibulum vitae mollis magna. Suspendisse iaculis hendrerit quam, eu lacinia ligula imperdiet sit amet. Duis eget neque tortor. Ut interdum venenatis sem sit amet dignissim. Morbi tortor lectus, ultricies sit amet elementum a, sagittis ac massa. Quisque nec erat vitae dui dapibus iaculis. Nunc lobortis a metus in mattis.",
-    "image": "images/a277ff83-db80-4ee5-9f03-6c1af7aab9e8.png",
-    "material": "PLA +",
-    "dimensions": "35*20",
-    "price": 0.0,
-    "features": [
-      "Endüstriyel & modern tasarım",
-      "Mat siyah/beyaz renk seçeneği",
-      "E27 ampul uyumlu (ampul dahil değildir)",
-      "Ayarlanabilir kablo uzunluğu"
-    ]
-  },
-  {
-    "id": "0daa72a0-cc0a-45d8-96a6-ebc5f8f595f4",
-    "name": "lore",
-    "category": "Aydınlatma Ürünleri",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada feugiat dui. Vestibulum vestibulum feugiat ex, egestas euismod tortor sollicitudin sed. Fusce laoreet tincidunt ex, vel ultricies orci pretium id. Nulla ultrices varius nunc, id congue neque. Suspendisse potenti. Maecenas molestie risus id ex facilisis tincidunt. Vestibulum vitae mollis magna. Suspendisse iaculis hendrerit quam, eu lacinia ligula imperdiet sit amet. Duis eget neque tortor. Ut interdum venenatis sem sit amet dignissim. Morbi tortor lectus, ultricies sit amet elementum a, sagittis ac massa. Quisque nec erat vitae dui dapibus iaculis. Nunc lobortis a metus in mattis.",
-    "image": "images/f2c2d62c-3aa5-41ea-a81c-6f35f44bc274.png",
-    "material": "PLA",
-    "dimensions": "20*40",
-    "price": 0.0,
-    "features": []
   }
 ]
