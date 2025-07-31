@@ -2,7 +2,7 @@
   {
     "id": "ac8fa9bf-3d24-4959-80ac-c8548cd07b61",
     "name": "Lorem Ipsu",
-    "category": "Vazo & Saksılar",
+    "category": "Dekoratif Objeler",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ultricies facilisis augue, ac convallis tortor. Maecenas ante massa, placerat quis elit nec, interdum scelerisque turpis. Quisque sagittis finibus metus, et ornare urna auctor nec. In euismod magna nunc, non malesuada mi ultrices sed. Nulla lacinia, tortor vitae vehicula imperdiet, libero risus ultricies dui, non hendrerit ex libero in neque. Quisque ultrices tortor eget eros commodo vestibulum. Proin sit amet ante sed sem lacinia iaculis. Proin varius rhoncus posuere. Maecenas consequat orci quis ligula molestie, sit amet lacinia orci volutpat. Curabitur vitae elit venenatis metus convallis aliquam. Aliquam sagittis urna egestas massa viverra egestas. Aliquam erat volutpat. Quisque maximus sem nec finibus interdum. Curabitur fermentum quis ligula quis blandit.",
     "image": "images/fce5f67b-d475-44d4-990b-170f1d151765.png",
     "material": "PLA",
@@ -18,7 +18,7 @@
   {
     "id": "be6f46b7-140e-43b3-abfa-7fe39e41111c",
     "name": "Lorem",
-    "category": "Vazo & Saksılar",
+    "category": "Dekoratif Objeler",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada feugiat dui. Vestibulum vestibulum feugiat ex, egestas euismod tortor sollicitudin sed. Fusce laoreet tincidunt ex, vel ultricies orci pretium id. Nulla ultrices varius nunc, id congue neque. Suspendisse potenti. Maecenas molestie risus id ex facilisis tincidunt. Vestibulum vitae mollis magna. Suspendisse iaculis hendrerit quam, eu lacinia ligula imperdiet sit amet. Duis eget neque tortor. Ut interdum venenatis sem sit amet dignissim. Morbi tortor lectus, ultricies sit amet elementum a, sagittis ac massa. Quisque nec erat vitae dui dapibus iaculis. Nunc lobortis a metus in mattis.",
     "image": "images/f28ecf3d-e6ee-4e76-b9c5-7b7c91bc1f58.png",
     "material": "PLA +",
@@ -33,7 +33,7 @@
   {
     "id": "bc42b292-afc3-4884-b17b-f6343da2f446",
     "name": "Lorem Ipsum",
-    "category": "Vazo & Saksılar",
+    "category": "Dekoratif Objeler",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada feugiat dui. Vestibulum vestibulum feugiat ex, egestas euismod tortor sollicitudin sed. Fusce laoreet tincidunt ex, vel ultricies orci pretium id. Nulla ultrices varius nunc, id congue neque. Suspendisse potenti. Maecenas molestie risus id ex facilisis tincidunt. Vestibulum vitae mollis magna. Suspendisse iaculis hendrerit quam, eu lacinia ligula imperdiet sit amet. Duis eget neque tortor. Ut interdum venenatis sem sit amet dignissim. Morbi tortor lectus, ultricies sit amet elementum a, sagittis ac massa. Quisque nec erat vitae dui dapibus iaculis. Nunc lobortis a metus in mattis.",
     "image": "images/a277ff83-db80-4ee5-9f03-6c1af7aab9e8.png",
     "material": "PLA +",
@@ -49,7 +49,7 @@
   {
     "id": "2a1470af-abf4-49fb-991b-3df9341f2324",
     "name": "lorem ips",
-    "category": "Aydınlatma",
+    "category": "Aydınlatma Ürünleri",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada feugiat dui. Vestibulum vestibulum feugiat ex, egestas euismod tortor sollicitudin sed. Fusce laoreet tincidunt ex, vel ultricies orci pretium id. Nulla ultrices varius nunc, id congue neque. Suspendisse potenti. Maecenas molestie risus id ex facilisis tincidunt. Vestibulum vitae mollis magna. Suspendisse iaculis hendrerit quam, eu lacinia ligula imperdiet sit amet. Duis eget neque tortor. Ut interdum venenatis sem sit amet dignissim. Morbi tortor lectus, ultricies sit amet elementum a, sagittis ac massa. Quisque nec erat vitae dui dapibus iaculis. Nunc lobortis a metus in mattis.",
     "image": "images/39fb7c36-f040-4949-a6fa-5d5f48f8006c.png",
     "material": "PLA",
@@ -60,7 +60,7 @@
   {
     "id": "0daa72a0-cc0a-45d8-96a6-ebc5f8f595f4",
     "name": "lore",
-    "category": "Lambalar",
+    "category": "Aydınlatma Ürünleri",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada feugiat dui. Vestibulum vestibulum feugiat ex, egestas euismod tortor sollicitudin sed. Fusce laoreet tincidunt ex, vel ultricies orci pretium id. Nulla ultrices varius nunc, id congue neque. Suspendisse potenti. Maecenas molestie risus id ex facilisis tincidunt. Vestibulum vitae mollis magna. Suspendisse iaculis hendrerit quam, eu lacinia ligula imperdiet sit amet. Duis eget neque tortor. Ut interdum venenatis sem sit amet dignissim. Morbi tortor lectus, ultricies sit amet elementum a, sagittis ac massa. Quisque nec erat vitae dui dapibus iaculis. Nunc lobortis a metus in mattis.",
     "image": "images/f2c2d62c-3aa5-41ea-a81c-6f35f44bc274.png",
     "material": "PLA",
