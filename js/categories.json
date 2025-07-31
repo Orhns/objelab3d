@@ -1,7 +1,27 @@
 [
   {
     "id": "0e034302-0fac-4570-b913-ece22ba7312b",
-    "name": "Masaüstü küçük objeler",
+    "name": "Masaüstü Küçük Objeler",
+    "description": ""
+  },
+  {
+    "id": "ee0930a3-422d-4e08-958d-19151a6be952",
+    "name": "Oyuncaklar",
+    "description": ""
+  },
+  {
+    "id": "7d3504db-27f1-4e3f-b305-8d3e66d1e386",
+    "name": "Dekoratif Objeler",
+    "description": ""
+  },
+  {
+    "id": "8aebd8b2-e488-42cf-bf6b-597a02cd6665",
+    "name": "Eğitici Oyuncaklar",
+    "description": ""
+  },
+  {
+    "id": "86a64e59-db9a-4f1f-96bb-5997391b2c65",
+    "name": "Aydınlatma Ürünleri",
     "description": ""
   }
 ]
