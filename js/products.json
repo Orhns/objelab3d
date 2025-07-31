@@ -47,17 +47,6 @@
     ]
   },
   {
-    "id": "2a1470af-abf4-49fb-991b-3df9341f2324",
-    "name": "lorem ips",
-    "category": "Aydınlatma Ürünleri",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada feugiat dui. Vestibulum vestibulum feugiat ex, egestas euismod tortor sollicitudin sed. Fusce laoreet tincidunt ex, vel ultricies orci pretium id. Nulla ultrices varius nunc, id congue neque. Suspendisse potenti. Maecenas molestie risus id ex facilisis tincidunt. Vestibulum vitae mollis magna. Suspendisse iaculis hendrerit quam, eu lacinia ligula imperdiet sit amet. Duis eget neque tortor. Ut interdum venenatis sem sit amet dignissim. Morbi tortor lectus, ultricies sit amet elementum a, sagittis ac massa. Quisque nec erat vitae dui dapibus iaculis. Nunc lobortis a metus in mattis.",
-    "image": "images/39fb7c36-f040-4949-a6fa-5d5f48f8006c.png",
-    "material": "PLA",
-    "dimensions": "25*35",
-    "price": 0.0,
-    "features": []
-  },
-  {
     "id": "0daa72a0-cc0a-45d8-96a6-ebc5f8f595f4",
     "name": "lore",
     "category": "Aydınlatma Ürünleri",
