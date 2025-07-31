@@ -28,8 +28,39 @@
     <meta name="twitter:image" content="https://objelab3d.com/images/logo.png">
     
     <title>Objelab 3D - Profesyonel 3D Tasarım ve Baskı Hizmetleri | İstanbul</title>
-    <link rel="stylesheet" href="css/style.css">
-    
+        <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* Loading Spinner */
+        .spinner {
+            display: none;
+            width: 24px;
+            height: 24px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+        
+        .submit-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .submit-button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+
     <!-- Schema.org Yapılandırılmış Veri -->
     <script type="application/ld+json">
     {
@@ -86,6 +117,11 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <script>
+        // HTTPS Yönlendirmesi
+        if (window.location.protocol !== 'https:' && window.location.hostname !== 'localhost') {
+            window.location.href = 'https://' + window.location.hostname + window.location.pathname + window.location.search;
+        }
+        
         // Wayback Machine ve diğer arşiv botlarını engelle
         if (navigator.userAgent.includes('ia_archiver') || 
             navigator.userAgent.includes('archive.org') ||
@@ -257,7 +293,10 @@
                         <input type="tel" id="phone" placeholder="Telefon Numaranız" inputmode="numeric" pattern="[0-9+ ]*" required/>
                         <textarea name="message" rows="5" placeholder="Mesajınız" required></textarea>
                         <div class="g-recaptcha" data-sitekey="6LdYbZQrAAAAAHZLGNzQeeiBEeKW3RnRWod6w1BS"></div>
-                        <button type="submit" class="submit-button">Gönder</button>
+                        <button type="submit" class="submit-button">
+                            <span>Gönder</span>
+                            <div class="spinner" id="submitSpinner"></div>
+                        </button>
                     </form>
 
                     <div class="social-links">
@@ -292,8 +331,32 @@
             
             <script>
             const form = document.getElementById("iletisimForm");
-            form.addEventListener("submit", function (e) {
+            
+            // Rate limiting için son gönderim zamanını kontrol et
+            const checkRateLimit = () => {
+                const lastSubmitTime = localStorage.getItem('lastFormSubmit');
+                const now = Date.now();
+                const COOLDOWN = 60000; // 1 dakika (milisaniye cinsinden)
+                
+                if (lastSubmitTime && (now - parseInt(lastSubmitTime)) < COOLDOWN) {
+                    const remainingTime = Math.ceil((COOLDOWN - (now - parseInt(lastSubmitTime))) / 1000);
+                    alert(`Lütfen ${remainingTime} saniye bekleyip tekrar deneyiniz.`);
+                    return false;
+                }
+                return true;
+            };
+
+            form.addEventListener("submit", async function (e) {
                 e.preventDefault();
+                
+                const submitButton = form.querySelector('.submit-button');
+                const spinner = document.getElementById('submitSpinner');
+                const buttonText = submitButton.querySelector('span');
+                
+                // Rate limit kontrolü
+                if (!checkRateLimit()) {
+                    return;
+                }
                 
                 // reCAPTCHA kontrolü
                 var recaptchaResponse = grecaptcha.getResponse();
@@ -301,6 +364,11 @@
                     alert("Lütfen robot olmadığınızı doğrulayın.");
                     return;
                 }
+
+                // Form gönderimi başlamadan önce
+                submitButton.disabled = true;
+                spinner.style.display = 'block';
+                buttonText.textContent = 'Gönderiliyor...';
 
                 const data = {
                 name: form.name.value,
@@ -310,20 +378,51 @@
                 "g-recaptcha-response": recaptchaResponse
                 };
 
-                fetch("https://script.google.com/macros/s/AKfycbz7gF31_9icviexg26ULrPWspVr0u7LVK5uxe4tSm97saWMTgvYQA0tRvqvV1jGA0eFcA/exec", {
-                method: "POST",
-                body: JSON.stringify(data)
+                // Form verilerini işle ve gönder
+                const FORM_ENDPOINT = window.atob('aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNyb3Mvcy9BS2Z5Y2J6N2dGMzFfOWljdmlleGcyNlVMclBXc3BWcjB1N0xWSzV1eGU0dFNtOTdzYVdNVGd2WVFBMHRSdnF2VjFqR0EwZUZjQS9leGVj');
+                
+                // XSS koruması için veriyi temizle
+                const sanitizeInput = (str) => {
+                    const div = document.createElement('div');
+                    div.textContent = str;
+                    return div.innerHTML;
+                };
+
+                // Veriyi temizle
+                const sanitizedData = {
+                    name: sanitizeInput(data.name),
+                    email: sanitizeInput(data.email),
+                    phone: sanitizeInput(data.phone),
+                    message: sanitizeInput(data.message),
+                    "g-recaptcha-response": data["g-recaptcha-response"]
+                };
+
+                fetch(FORM_ENDPOINT, {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    body: JSON.stringify(sanitizedData)
                 })
                 .then(res => res.text())
                 .then(response => {
-                alert("Mesajınız başarıyla gönderildi!");
-                form.reset();
-                grecaptcha.reset();
+                    // Form başarıyla gönderildiğinde rate limit zamanını güncelle
+                    localStorage.setItem('lastFormSubmit', Date.now().toString());
+                    alert("Mesajınız başarıyla gönderildi!");
+                    form.reset();
+                    grecaptcha.reset();
                 })
                 .catch(err => {
-                alert("Hata oluştu. Lütfen tekrar deneyin.");
-                grecaptcha.reset();
-                console.error(err);
+                    alert("Hata oluştu. Lütfen tekrar deneyin.");
+                    grecaptcha.reset();
+                    console.error(err);
+                })
+                .finally(() => {
+                    // Form gönderimi tamamlandığında
+                    submitButton.disabled = false;
+                    spinner.style.display = 'none';
+                    buttonText.textContent = 'Gönder';
                 });
             });
             </script>
