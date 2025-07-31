@@ -420,19 +420,24 @@
                 buttonText.textContent = 'Gönderiliyor...';
 
                 try {
-                    const formData = new FormData();
-                    formData.append('name', form.name.value);
-                    formData.append('email', form.email.value);
-                    formData.append('phone', form.phone.value);
-                    formData.append('message', form.message.value);
-                    formData.append('g-recaptcha-response', recaptchaResponse);
+                    // Form verilerini hazırla
+                    const data = {
+                        name: form.name.value,
+                        email: form.email.value,
+                        phone: form.phone.value,
+                        message: form.message.value,
+                        "g-recaptcha-response": recaptchaResponse
+                    };
 
                     const FORM_ENDPOINT = window.atob('aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNyb3Mvcy9BS2Z5Y2J6N2dGMzFfOWljdmlleGcyNlVMclBXc3BWcjB1N0xWSzV1eGU0dFNtOTdzYVdNVGd2WVFBMHRSdnF2VjFqR0EwZUZjQS9leGVj');
 
                     const response = await fetch(FORM_ENDPOINT, {
                         method: 'POST',
                         mode: 'no-cors',
-                        body: formData
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
                     });
 
                     // no-cors modunda response.ok kontrolü yapılamaz
