@@ -43,6 +43,109 @@
         <link rel="stylesheet" href="css/style.css">
 
     <style>
+        /* Mobil Menü İyileştirmeleri */
+        .nav-links {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                right: -100%;
+                top: 0;
+                height: 100vh;
+                width: 250px;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 80px 20px;
+                z-index: 98;
+                box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .burger {
+                z-index: 99;
+            }
+
+            .burger.active .line1 {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .burger.active .line2 {
+                opacity: 0;
+            }
+
+            .burger.active .line3 {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
+            /* Overlay arka plan */
+            .nav-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 97;
+            }
+
+            .nav-overlay.active {
+                display: block;
+            }
+        }
+
+        /* Ürün Grid Responsive İyileştirmesi */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* Form Responsive İyileştirmesi */
+        @media screen and (max-width: 768px) {
+            .info-section-container {
+                flex-direction: column;
+            }
+
+            .faq-side, .contact-side {
+                width: 100%;
+                padding: 20px;
+            }
+
+            .contact-form input,
+            .contact-form textarea {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            /* Filtre kontrolleri mobil için */
+            .filter-controls {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .filter-group {
+                width: 100%;
+            }
+
+            /* Arama kutusu mobil için */
+            .search-box {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+        }
+
         /* Loading Spinner */
         .spinner {
             display: none;
@@ -195,8 +298,54 @@
                 <div class="line2"></div>
                 <div class="line3"></div>
             </div>
+            <div class="nav-overlay"></div>
         </nav>
     </header>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const burger = document.querySelector('.burger');
+            const nav = document.querySelector('.nav-links');
+            const overlay = document.querySelector('.nav-overlay');
+            const navLinks = document.querySelectorAll('.nav-links li');
+
+            function toggleMenu() {
+                // Menüyü aç/kapat
+                nav.classList.toggle('active');
+                burger.classList.toggle('active');
+                overlay.classList.toggle('active');
+                
+                // Body scroll'u engelle/serbest bırak
+                document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+            }
+
+            // Burger menü tıklama
+            burger.addEventListener('click', toggleMenu);
+
+            // Overlay tıklama
+            overlay.addEventListener('click', toggleMenu);
+
+            // Menü linklerine tıklama
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    toggleMenu();
+                });
+            });
+
+            // Sayfa scroll olduğunda menüyü kapat
+            let lastScroll = 0;
+            window.addEventListener('scroll', () => {
+                const currentScroll = window.pageYOffset;
+                if (Math.abs(currentScroll - lastScroll) > 50) {
+                    nav.classList.remove('active');
+                    burger.classList.remove('active');
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                    lastScroll = currentScroll;
+                }
+            });
+        });
+    </script>
 
     <main>
         <section id="anasayfa" class="hero">
@@ -239,7 +388,16 @@
                     <button class="search-btn"><i class="fas fa-search"></i></button>
                 </div>
                 
+                <button id="filterToggle" class="filter-toggle">
+                    <i class="fas fa-filter"></i> Filtreler
+                </button>
+
                 <div class="filter-controls">
+                    <div class="filter-header">
+                        <h3>Filtreler</h3>
+                        <button class="close-filters">&times;</button>
+                    </div>
+
                     <div class="filter-group">
                         <label>Kategori:</label>
                         <select id="categoryFilter">
@@ -277,8 +435,131 @@
                             <option value="name-desc">İsim (Z-A)</option>
                         </select>
                     </div>
+
+                    <div class="filter-actions">
+                        <button class="apply-filters">Uygula</button>
+                        <button class="reset-filters">Sıfırla</button>
+                    </div>
                 </div>
             </div>
+
+            <style>
+                /* Filtre Mobil Stil */
+                .filter-toggle {
+                    display: none;
+                    padding: 10px 20px;
+                    background: #004080;
+                    color: white;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    margin: 10px 0;
+                }
+
+                .filter-header {
+                    display: none;
+                }
+
+                .filter-actions {
+                    display: none;
+                }
+
+                @media screen and (max-width: 768px) {
+                    .filter-toggle {
+                        display: block;
+                    }
+
+                    .filter-controls {
+                        display: none;
+                        position: fixed;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        width: 280px;
+                        background: white;
+                        padding: 20px;
+                        box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+                        z-index: 1000;
+                        overflow-y: auto;
+                    }
+
+                    .filter-controls.active {
+                        display: block;
+                    }
+
+                    .filter-header {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-bottom: 20px;
+                    }
+
+                    .close-filters {
+                        background: none;
+                        border: none;
+                        font-size: 24px;
+                        cursor: pointer;
+                    }
+
+                    .filter-actions {
+                        display: flex;
+                        gap: 10px;
+                        margin-top: 20px;
+                    }
+
+                    .apply-filters,
+                    .reset-filters {
+                        flex: 1;
+                        padding: 10px;
+                        border: none;
+                        border-radius: 5px;
+                        cursor: pointer;
+                    }
+
+                    .apply-filters {
+                        background: #004080;
+                        color: white;
+                    }
+
+                    .reset-filters {
+                        background: #f0f0f0;
+                    }
+                }
+            </style>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const filterToggle = document.getElementById('filterToggle');
+                    const filterControls = document.querySelector('.filter-controls');
+                    const closeFilters = document.querySelector('.close-filters');
+                    const applyFilters = document.querySelector('.apply-filters');
+                    const resetFilters = document.querySelector('.reset-filters');
+
+                    filterToggle?.addEventListener('click', () => {
+                        filterControls.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    });
+
+                    closeFilters?.addEventListener('click', () => {
+                        filterControls.classList.remove('active');
+                        document.body.style.overflow = '';
+                    });
+
+                    applyFilters?.addEventListener('click', () => {
+                        filterControls.classList.remove('active');
+                        document.body.style.overflow = '';
+                        // Burada filtreleme fonksiyonunu çağırabilirsiniz
+                    });
+
+                    resetFilters?.addEventListener('click', () => {
+                        document.getElementById('categoryFilter').value = 'all';
+                        document.getElementById('materialFilter').value = 'all';
+                        document.getElementById('priceFilter').value = 'all';
+                        document.getElementById('sortFilter').value = 'default';
+                        // Burada filtreleme fonksiyonunu çağırabilirsiniz
+                    });
+                });
+            </script>
 
             <!-- Ürün Grid -->
             <div class="product-grid" id="productGrid">
@@ -304,7 +585,7 @@
                     Lisans eğitimimi tamamladıktan sonra IoT tabanlı cihazlar geliştirerek elektronik ve donanım alanlarında kendimi geliştirdim.
                     İhtiyaç duyduğum özgün kutu tasarımları için bir 3D yazıcı edinmem, bu süreci 3D modelleme ile birleştirmeme vesile oldu. Zamanla teknik becerilerimi estetik kaygılarla harmanlayarak işlevsel ve özgün tasarımlar üretmeye başladım.
                     Bugün, bu bilgi ve deneyimi hayata değer katan tasarımlara dönüştürmek amacıyla çalışıyor; her bir ürünü, bir ihtiyacın, fikrin ya da formun somut karşılığı olarak şekillendiriyorum.</p>
-                    <p style="text-align: center; color: #666; font-style: italic; margin: 0.5rem 0;">-Ürünlerimizi şu an sadece tanıtım amaçlı paylaşıyoruz-</p>
+                    <!-- <p style="text-align: center; color: #666; font-style: italic; margin: 0.5rem 0;">-Ürünlerimizi şu an sadece tanıtım amaçlı paylaşıyoruz-</p> -->
                 </div>
         </section>
 
